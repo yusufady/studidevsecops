@@ -1,0 +1,8 @@
+#!/bin/bash
+host="google.com"
+ping -c 4 $host
+
+if ["$?" -ne "0"]; then
+   echo "$host unreachable.."
+fi
+exit 0
