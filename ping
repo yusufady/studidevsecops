@@ -1,8 +1,11 @@
 #!/bin/bash
-host="google.com"
-ping -c 4 $host
+hosts=$(awk '{print $1}' /etc/hosts | sort -u)
+for host in $hosts; do 
+   echo "ping status...";
+   ping -c 5 $host 2> /dev/null
 
 if ["$?" -ne "0"]; then
    echo "$host unreachable.."
 fi
+done
 exit 0
